@@ -89,7 +89,7 @@ export function Layout({ children, title }) {
                 {usuario?.nombre || usuario?.username || "Usuario"}
               </div>
               <div className="sidebar-user-role">
-                {usuario?.rol || "Auxiliar"}
+                {usuario?.rol || "Administrador"}
               </div>
             </div>
             <button
