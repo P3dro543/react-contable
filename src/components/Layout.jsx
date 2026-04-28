@@ -55,7 +55,7 @@ export function Layout({ children, title }) {
           <img src="/logo.png" alt="Logo" style={{ width: "30px", height: "30px", objectFit: "contain" }} />
           <div>
             <div className="sidebar-brand-name">SistemaContable</div>
-            <span className="sidebar-brand-sub">Módulo Auxiliares</span>
+            <span className="sidebar-brand-sub">Módulo Administradores</span>
           </div>
         </NavLink>
 
