@@ -21,6 +21,15 @@ export function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  // Revisar si hubo cierre de sesión por inactividad
+  useState(() => {
+    const reason = sessionStorage.getItem("logout_reason");
+    if (reason) {
+      setError(reason);
+      sessionStorage.removeItem("logout_reason"); // Limpiar para que no se repita
+    }
+  });
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setError("");
@@ -134,4 +143,4 @@ export function LoginPage() {
       </div>
     </div>
   );
-}
+}

@@ -7,7 +7,7 @@ import { createContext, useContext, useState, useEffect, useCallback, useRef } f
 
 const AuthContext = createContext(null);
 
-const INACTIVITY_MS = 5 * 60 * 1000; // 5 minutos — AUX4 (Requerimiento PDF)
+const INACTIVITY_MS = 5 * 60 * 1000; // 
 
 const USUARIO_DEFAULT = null;
 
@@ -22,23 +22,30 @@ export function AuthProvider({ children }) {
 
   const timerRef = useRef(null);
 
-  const logout = useCallback(() => {
+  const logout = useCallback((reason = null) => {
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
+    if (reason) {
+      sessionStorage.setItem("logout_reason", reason);
+    }
     setUsuario(USUARIO_DEFAULT);
   }, []);
 
   const login = useCallback((token, userData) => {
     localStorage.setItem("token", token);
     localStorage.setItem("usuario", JSON.stringify(userData));
+    sessionStorage.removeItem("logout_reason");
     setUsuario(userData);
   }, []);
 
   // ─── AUX4: Timer de inactividad ──────────────────────────
   const resetTimer = useCallback(() => {
+    if (!usuario) return; // Solo si hay sesión activa
     clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(logout, INACTIVITY_MS);
-  }, [logout]);
+    timerRef.current = setTimeout(() => {
+      logout("Su sesión ha expirado por inactividad para proteger sus datos.");
+    }, INACTIVITY_MS);
+  }, [logout, usuario]);
 
   useEffect(() => {
     const events = ["mousedown", "keydown", "scroll", "touchstart"];
