@@ -8,6 +8,9 @@ import { AuthProvider }            from "../context/AuthContext";
 import { ProtectedRoute }         from "../components/ProtectedRoute";
 import { Layout }                  from "../components/Layout";
 
+// 👇 NUEVO (no rompe nada)
+import { SessionExpiredOverlay } from "../components/SessionExpiredOverlay";
+
 // Páginas
 import { LoginPage }               from "../pages/LoginPage";
 import { BienvenidaPage }          from "../pages/BienvenidaPage";
@@ -27,6 +30,10 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+
+        {/* 👇 NUEVO (global, no afecta rutas) */}
+        <SessionExpiredOverlay />
+
         <Routes>
           {/* Ruta pública */}
           <Route path="/login" element={<LoginPage />} />
