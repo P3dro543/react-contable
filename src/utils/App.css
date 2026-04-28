@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.form-center {
+  display: flex;
+  flex-direction: column;  /* Apila los elementos verticalmente */
+  gap: 10px;               /* Espacio entre el label, input y botón */
+  align-items: center;     /* Asegura que el contenido del form esté centrado */
+}
+
+input {
+  padding: 8px;
+  width: 200px;
+}
