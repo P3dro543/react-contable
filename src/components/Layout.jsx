@@ -14,7 +14,7 @@ const MENU = [
     ],
   },
   {
-    section: "Auxiliares",
+    section: "Administración",
     items: [
       { path: "/terceros",       label: "Terceros",         icon: "👥" },
       { path: "/centros-costo",  label: "Centros de Costo", icon: "🏷️" },
